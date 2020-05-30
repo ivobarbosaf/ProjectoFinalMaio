@@ -13,6 +13,10 @@ import Backend.listas.ListaUtilizadores;
  * Bruno Ferreira (bruno@dsi.uminho.pt)
  */
 public class ListagemUtilizadores extends javax.swing.JFrame {
+    
+    /**
+     * Atributos de Classe
+     */
     private Sistema sistema;
     private AbstractTableModel modeloTabela;
     

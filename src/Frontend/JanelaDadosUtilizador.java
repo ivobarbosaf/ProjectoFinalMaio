@@ -17,51 +17,36 @@ import Backend.entidades.Utilizador;
  * 
  */
 public class JanelaDadosUtilizador extends javax.swing.JDialog {
-    //Referencia ao Sistema, a lista de utilizadores esta no sistema
-    private Sistema sistema;    
-    //Referencia a ListagemUtilizadores. Se for indicado, depois de alterarmos um registo podemos solicitar que a tabela seja redesenhada
-    private ListagemUtilizadores listagem;
-    //Referencia ao Utilizador que queremos visualizar/editar
-    private Utilizador utilizador;   
+    
+    /**
+     * Atributos de classe
+    */
+    private Sistema sistema;//Referencia ao Sistema, a lista de utilizadores esta no sistema
+    private ListagemUtilizadores listagem; //Referencia a ListagemUtilizadores. Se for indicado, depois de alterarmos um registo podemos solicitar que a tabela seja redesenhada
+    private Utilizador utilizador; //Referencia a ListagemUtilizadores. Se for indicado, depois de alterarmos um registo podemos solicitar que a tabela seja redesenhada 
+    
+    /**
+     * Método Construtor
+     * 
+     */
     
     public JanelaDadosUtilizador(Sistema sistema, Utilizador utilizador, ListagemUtilizadores listagem) {
         initComponents();
-        
-        //Indica que a janela deve ser modal ou seja,
-        //bloqueia a execução do programa até que a janela seja fechada
-        this.setModal(true);           
-        
-        //Não permite o redimensionamento da janela
-        this.setResizable(false);                        
-        
-        //Mostra a centralização da janela
-        this.setLocationRelativeTo(null);
-        
-        //Guarda a referencia ao sistema
-        this.sistema = sistema;   
-        
-        //Guarda a referencia ao utilizador
-        this.utilizador = utilizador;
-        
-        //Guarda a referencia a listagem
-        this.listagem = listagem;
-        
-        //No caso de um registo novo
-        if (registoNovo()) {    
-            //Altera o titulo da janela
-            //Como construimos sempre uma nova janela, as caixas de texto já estão limpas
-            setTitle("Criação de novo utilizador");
+        this.setModal(true);    //Indica que a janela deve ser modal ou seja bloqueia a execução do programa até que a janela seja fechada 
+        this.setResizable(false); //Não permite o redimensionamento da janela                       
+        this.setLocationRelativeTo(null);//Mostra a centralização da janela
+        this.sistema = sistema;//Guarda a referencia ao sistema   
+        this.utilizador = utilizador;//Guarda a referencia ao utilizador
+        this.listagem = listagem;//Guarda a referencia a listagem
+        if (registoNovo()) {  //No caso de um registo novo  
+            setTitle("Criação de novo utilizador");//Altera o titulo da janela//Como construimos sempre uma nova janela, as caixas de texto já estão limpas
             txtUtilizador.requestFocus();                      
         }else{
-            //No caso de um registo existente
-            //Altera o titulo da janela
-            setTitle("Alteração de dados de utilizador");
-            //Preenche as caixas de texto com os dados do utilizador
-            txtUtilizador.setText(utilizador.getUsername());
+            setTitle("Alteração de dados de utilizador");//No caso de um registo existente//Altera o titulo da janela
+            txtUtilizador.setText(utilizador.getUsername());//Preenche as caixas de texto com os dados do utilizador
             txtNome.setText(utilizador.getNomeCompleto());            
             txtPassword.requestFocus();
         }               
-        
     }    
     
     private boolean registoNovo() {

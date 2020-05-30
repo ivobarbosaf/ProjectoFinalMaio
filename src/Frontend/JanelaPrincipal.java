@@ -18,19 +18,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.sistema = sistema;
         this.bd = bd;
-        
-        //Força a maximização da janela
-        this.setExtendedState(JanelaPrincipal.MAXIMIZED_BOTH);    
-        
-        //O processo de fecho da janela será controlado pelo programa
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        
-        //Apenas mostra o menu de administração se o utilizador for um administrador
-        mnuAdministrador.setVisible(sistema.getUtilizadorLigado() instanceof Administrador);
-        
-        //Apenas mostra o menu de utilizador se o de administração estiver oculto
-        mnuUtilizador.setVisible(!mnuAdministrador.isVisible());               
-        
+        this.setExtendedState(JanelaPrincipal.MAXIMIZED_BOTH);//Força a maximização da janela    
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);//O processo de fecho da janela será controlado pelo programa
+        mnuAdministrador.setVisible(sistema.getUtilizadorLigado() instanceof Administrador);//Apenas mostra o menu de administração se o utilizador for um administrador
+        /**
+         * Para que o menu deixe de ficar disponivel para o administradaor
+         * mnuUtilizador.setVisible(!mnuAdministrador.isVisible());//Apenas mostra o menu de utilizador se o de administração estiver oculto  
+         * 
+         */
     }      
     
     private void guardarAlteracoes() {
