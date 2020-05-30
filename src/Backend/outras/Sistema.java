@@ -43,7 +43,7 @@ public class Sistema implements Serializable{
         this.utilizadorLigado = utilizadorLigado;
     }
 
-    public ListaUtilizadores getUtilizadores() {
+    public ListaUtilizadores getListaUtilizadores() {
         return utilizadores;
     }
 
@@ -58,10 +58,10 @@ public class Sistema implements Serializable{
       public boolean autenticarUtilizador(String username, String password) {        
         if (utilizadores.existe(username)) {
             try{
-                Utilizador u = utilizadores.procurarUtilizador(username);                
-                if (u.getPassword().equals(password)){
-                    utilizadorLigado = u;
-                    listaEntradas.add(new RegistoAcesso(u, LocalDateTime.now()));
+                Utilizador user = utilizadores.procurarUtilizador(username);                
+                if (user.getPassword().equals(password)){
+                    utilizadorLigado = user;
+                    listaEntradas.add(new RegistoAcesso(user, LocalDateTime.now()));
                     return true;
                 }                
             }catch (Exception e) {}                        
@@ -70,7 +70,7 @@ public class Sistema implements Serializable{
     }
     
     public void inicializar() throws ListaUtilizadores.UtilizadorDuplicadoException {
-        utilizadores.adicionar(new Administrador("admin", "admin", "Aministrador"));
+        utilizadores.adicionar(new Administrador("admin1", "admin1", "Aministrador"));
         utilizadores.adicionar(new Utilizador("user1", "1234", "Utilizador 1"));
         utilizadores.adicionar(new Utilizador("user2", "1234", "Utilizador 2"));        
     }
